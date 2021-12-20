@@ -22,9 +22,9 @@ class Post
     #[ORM\Column(type: 'string', length: 255)]
     private $author;
 
-    #[ORM\ManyToOne(targetEntity: Categorie::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private $categorie;
+    private $category;
 
     public function getId(): ?int
     {
@@ -67,14 +67,14 @@ class Post
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    public function getCategory(): ?Category
     {
-        return $this->categorie;
+        return $this->category;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function setCategory(?Category $category): self
     {
-        $this->categorie = $categorie;
+        $this->category = $category;
 
         return $this;
     }
