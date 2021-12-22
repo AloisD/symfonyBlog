@@ -4,10 +4,15 @@ namespace App\Entity;
 
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
+use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
 {
+    use SluggableTrait;
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -77,5 +82,15 @@ class Post
         $this->category = $category;
 
         return $this;
+    }
+
+    public function getSluggableFields(): array
+    {
+        return ['title'];
+    }
+
+    public function generateSlugValue($values): string
+    {
+        return strtolower(implode('-', $values));
     }
 }
