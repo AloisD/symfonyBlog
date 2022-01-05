@@ -4,21 +4,24 @@
 
 {% block body %}
 <div class="container">
-<div class="example-wrapper">
     <h1>Hello, here is a list of intersting blog posts!</h1>
-    {% for post in blogPosts %}
-        <div class="card" style="width: 18rem;">
-            {# <img src="..." class="card-img-top" alt="..."> #}
-            <div class="card-body">
-                <h2 class="card-title">{{ post.title }}</h2>
-                <h3>Catégorie : {{ post.category.name }}</h3>
-                <p class="card-text">{{ post.content }}</p>
-                <a href="#" class="btn btn-primary">Lire l'article</a>
+    {% for post in pagination %}
+        <div class="flex">
+            <div class="card" style="width: 18rem;">
+                {# <img src="..." class="card-img-top" alt="..."> #}
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <h3>Catégorie : {{ post.category.name }}</h3>
+                    <p class="card-text">{{ post.content }}</p>
+                    <a href="#" class="btn btn-primary">Lire l'article</a>
+                </div>
             </div>
         </div>
     {% else %}
         Aucun article trouvé.
     {% endfor %}
-</div>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 </div>
 {% endblock %}

@@ -1,9 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: #C2F6FF;
+    color: #85edff;
+    background-color: #f8feff;
 }
 
-h1 {
-    color: #f8c6fa;
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    color: #fca2ff;
+    background-color: #fffbff;
 }

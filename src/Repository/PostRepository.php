@@ -19,6 +19,21 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    public function getListQuery(?string $slug = null) 
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+                        ->addSelect('c')
+                        ->innerJoin('p.category', 'c');
+
+        if ($slug) {
+            $queryBuilder->andWhere('c.name = :cat')
+                        ->setParameter('cat', $slug);
+        }
+
+        return $queryBuilder->orderBy('p.id', 'ASC')
+                            ->getQuery();
+    }
+
     // /**
     //  * @return Post[] Returns an array of Post objects
     //  */
