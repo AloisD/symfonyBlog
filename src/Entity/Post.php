@@ -8,7 +8,7 @@ use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
 use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
-class Post implements SluggableInterface
+class Post //implements SluggableInterface
 {
     use SluggableTrait;
 
