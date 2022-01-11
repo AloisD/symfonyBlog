@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    #[Route('/categories/{slug}', name: 'posts_by_category')]
+    #[Route('/category/{slug}', name: 'posts_by_category')]
     public function index(PostRepository $blogPosts, PaginatorInterface $paginator, Request $request, ?string $slug = null): Response
     {
         $pagination = $paginator->paginate(
